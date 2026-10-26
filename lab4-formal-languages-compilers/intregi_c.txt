@@ -1,0 +1,121 @@
+# AFD pentru constante intregi (literali) din C/C++
+# Sursa: ISO/IEC 9899:2011 (C11) 6.4.4.1 'Integer constants';
+#        https://en.cppreference.com/w/c/language/integer_constant
+#D = “sunt în mijlocul unui număr zecimal” (am citit cel puțin o cifră nenulă la început)
+#Z = “am citit exact un singur 0”
+#O = “sunt în mijlocul unui octal” (am citit 0, apoi cifre 0-7)
+#H/HX = “sunt în mijlocul unui hexazecimal”
+#U, L, UL, etc. = “am terminat numărul, acum citesc sufixul”
+stari: q0 D Z O HX H U L UL LU LL ULL LLU
+alfabet: 0 1 2 3 4 5 6 7 8 9 A B C D E F L U X a b c d e f l u x
+initiala: q0
+finale: D Z O H U L UL LU LL ULL LLU
+tranzitii:
+q0 1 D
+q0 2 D
+q0 3 D
+q0 4 D
+q0 5 D
+q0 6 D
+q0 7 D
+q0 8 D
+q0 9 D
+q0 0 Z
+D 0 D
+D 1 D
+D 2 D
+D 3 D
+D 4 D
+D 5 D
+D 6 D
+D 7 D
+D 8 D
+D 9 D
+Z 0 O
+Z 1 O
+Z 2 O
+Z 3 O
+Z 4 O
+Z 5 O
+Z 6 O
+Z 7 O
+Z x HX
+Z X HX
+O 0 O
+O 1 O
+O 2 O
+O 3 O
+O 4 O
+O 5 O
+O 6 O
+O 7 O
+HX 0 H
+HX 1 H
+HX 2 H
+HX 3 H
+HX 4 H
+HX 5 H
+HX 6 H
+HX 7 H
+HX 8 H
+HX 9 H
+HX a H
+HX b H
+HX c H
+HX d H
+HX e H
+HX f H
+HX A H
+HX B H
+HX C H
+HX D H
+HX E H
+HX F H
+H 0 H
+H 1 H
+H 2 H
+H 3 H
+H 4 H
+H 5 H
+H 6 H
+H 7 H
+H 8 H
+H 9 H
+H a H
+H b H
+H c H
+H d H
+H e H
+H f H
+H A H
+H B H
+H C H
+H D H
+H E H
+H F H
+D u U
+D U U
+D l L
+D L L
+Z u U
+Z U U
+Z l L
+Z L L
+O u U
+O U U
+O l L
+O L L
+H u U
+H U U
+H l L
+H L L
+U l UL
+U L UL
+L u LU
+L U LU
+L l LL
+L L LL
+UL l ULL
+UL L ULL
+LL u LLU
+LL U LLU

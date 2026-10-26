@@ -1,0 +1,32 @@
+Gramatica fisierului de intrare pentru automat finit
+
+Notatie: EBNF:
+neterminale = cuvinte, 
+terminale = "intre ghilimele", 
+| alternanta,
+() grupare, 
+[] optional, 
+{} repetare (0 sau mai multe ori),
+. sfarsit de regula.
+
+Gramatica (EBNF)
+----------------
+
+Automat        = LiniaStari LiniaAlfabet LiniaInitiala LiniaFinale LiniaTranzitii .
+
+LiniaStari     = "stari" ":" ListaIdentificatori NL .
+LiniaAlfabet   = "alfabet" ":" ListaSimboluri NL .
+LiniaInitiala  = "initiala" ":" Identificator NL .
+LiniaFinale    = "finale" ":" ListaIdentificatori NL .
+LiniaTranzitii = "tranzitii" ":" NL { Tranzitie } .
+
+Tranzitie      = Identificator Simbol Identificator NL .
+
+ListaIdentificatori = Identificator { Identificator } .
+ListaSimboluri      = Simbol { Simbol } .
+
+Identificator  = litera { litera | cifra } .
+Simbol         = caracter_ascii_vizibil .
+
+NL             = "\n" .   
+caracter_ascii_vizibil = orice caracter ASCII tiparibil, cu exceptia spatiului, tab-ului si newline-ului .
