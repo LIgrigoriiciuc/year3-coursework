@@ -1,7 +1,7 @@
 """
 clasa AF generica, valabila pentru orice automat finit (deteminist sau nedeterminist)
 tranzitiile sunt stocate ca dict[(stare,simbol)]->set(stari), ceea ce permite reprezentarea unui AFN fara nicio schimbare de structura atunci cand automatul este de fapt determinist (caz in care fiecare multime din dictionar are cel mult un element)
-formatul fisierului de intrare este descris in EBNF in grammar.txt
+formatul fisierului de intrare este descris in EBNF in grammar.md
 """
 
 class AF:

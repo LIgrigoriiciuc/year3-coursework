@@ -6,10 +6,10 @@
 #O = “sunt în mijlocul unui octal” (am citit 0, apoi cifre 0-7)
 #H/HX = “sunt în mijlocul unui hexazecimal”
 #U, L, UL, etc. = “am terminat numărul, acum citesc sufixul”
-stari: q0 D Z O HX H U L UL LU LL ULL LLU
-alfabet: 0 1 2 3 4 5 6 7 8 9 A B C D E F L U X a b c d e f l u x
+stari: q0 S D Z O HX H BX BN U L UL LU LL ULL LLU
+alfabet: 0 1 2 3 4 5 6 7 8 9 A B C D E F L U X a b c d e f l u x + - ~
 initiala: q0
-finale: D Z O H U L UL LU LL ULL LLU
+finale: D Z O H BN U L UL LU LL ULL LLU
 tranzitii:
 q0 1 D
 q0 2 D
@@ -21,6 +21,19 @@ q0 7 D
 q0 8 D
 q0 9 D
 q0 0 Z
+q0 + S
+q0 - S
+q0 ~ S
+S 1 D
+S 2 D
+S 3 D
+S 4 D
+S 5 D
+S 6 D
+S 7 D
+S 8 D
+S 9 D
+S 0 Z
 D 0 D
 D 1 D
 D 2 D
@@ -41,6 +54,8 @@ Z 6 O
 Z 7 O
 Z x HX
 Z X HX
+Z b BX
+Z B BX
 O 0 O
 O 1 O
 O 2 O
@@ -119,3 +134,11 @@ UL l ULL
 UL L ULL
 LL u LLU
 LL U LLU
+BX 0 BN
+BX 1 BN
+BN 0 BN
+BN 1 BN
+BN u U
+BN U U
+BN l L
+BN L L
