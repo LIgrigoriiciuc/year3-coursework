@@ -1,0 +1,11 @@
+stari: q0 p r1 reven f
+alfabet: a b
+initiala: q0
+finale: p f q0
+tranzitii:
+q0 a r1
+q0 b p
+p b p
+r1 a reven
+reven a r1
+reven b f
