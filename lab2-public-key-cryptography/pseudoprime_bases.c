@@ -1,15 +1,13 @@
 /*
 8: find all bases b for which an odd composite number n is pseudoprime
-n is pseudoprime to base b if gcd(b, n) = 1 and b^(n−1) mod n = 1
-modular exponentiation uses the repeated squaring method
-n is limited to 32 bits so that the product of two residues (each < n) always fits in an unsigned 64-bit integer
-Fermat’s little theorem is one-directional:
-If p is prime and gcd(b, p) = 1 => b^(p−1) ≡ 1 (mod p)
-Carmichael numbers like 561 give 1 for every coprime base
-original:
-n prime ⇒ b^(n−1) ≡ 1 for all coprime b (but not the other way around)
-contrapositive:
-there exists a coprime b with b^(n−1) ≢ 1 (mod n) ⇒ n is not prime (so composite, for n ≥ 2)
+Fermat’s little theorem: a fact about primes
+If n is prime, then for every b with (b, n) = 1: b^(n−1) ≡ 1 (mod n).
+The Fermat test: an algorithm that uses the theorem
+Pick a random base b, compute r = b^(n−1) mod n. If r ≠ 1, output COMPOSITE. If it never fails after k tries, output PROBABLY PRIME.
+Pseudoprime: a definition about composites
+An odd composite n is a pseudoprime to base b if (b, n) = 1 and b^(n−1) ≡ 1 (mod n).
+It names a composite number that fooled the test for one specific base. It’s the “failure case” of the test. It is always relative to a base b.
+Carmichael numbers (like 561) are the exception: composites that pass for every base coprime to n, so the Fermat test can’t catch them.
 */
 #include <stdio.h>
 #include <stdlib.h>
